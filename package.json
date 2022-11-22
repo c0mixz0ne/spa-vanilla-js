@@ -1,0 +1,27 @@
+{
+  "name": "spa_example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "cross-env BUILD_TYPE=dev vite build",
+    "serve": "vite preview --port 3000",
+    "build-prod": "cross-env BUILD_TYPE=prod vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@vitejs/plugin-legacy": "^2.3.1",
+    "cross-env": "^7.0.3",
+    "sass": "^1.56.1",
+    "vite": "^3.2.4",
+    "vite-aliases": "^0.9.7"
+  },
+  "dependencies": {
+    "route-parser": "^0.0.5"
+  }
+}
