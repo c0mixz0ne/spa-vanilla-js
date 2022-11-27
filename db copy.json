@@ -1,0 +1,117 @@
+{
+    "users": [
+        {
+            "id": "12345",
+            "user_name": "Anton_A",
+            "user_fullname": "Anton Aladin"
+        },
+        {
+            "id": "123-123-123",
+            "user_name": "Anton A",
+            "user_fullname": "Anton Aladin"
+        },
+        {
+            "id": "123-123-123",
+            "user_name": "Anton A",
+            "user_fullname": "Anton Aladin"
+        },
+        {
+            "id": "123-123-123",
+            "user_name": "Anton A",
+            "user_fullname": "Anton Aladin"
+        },
+        {
+            "id": "123-123-123",
+            "user_name": "Anton A",
+            "user_fullname": "Anton Aladin"
+        }
+    ],
+    "posts": [
+        {
+            "id": "id1",
+            "userId": "12345",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        },
+        {
+            "id": "id1",
+            "userId": "1",
+            "createdAt": "2022",
+            "title": "Title",
+            "text": "text"
+        }
+    ],
+    "comments": [
+        {
+            "id": "id1",
+            "userId": "12345",
+            "createdAt": "2022",
+            "title": "TitleComment",
+            "text": "textComment"
+        },
+        {
+            "id": "id2",
+            "userId": "2",
+            "createdAt": "2022",
+            "title": "TitleComment",
+            "text": "textComment"
+        },
+        {
+            "id": "id2",
+            "userId": "2",
+            "createdAt": "2022",
+            "title": "TitleComment",
+            "text": "textComment"
+        }
+    ]
+}
