@@ -4,7 +4,7 @@ import { randomColor, invertColor, getUserInitials, highlightText } from '../com
 import { getPost, setPost } from '../service/posts'
 import { getUser, setUser } from '../service/users'
 import { getPosts, getPostsByUser, getPostsSearch } from '../api/postsApi'
-import { getUsers, getUsersSearch } from '../api/usersApi'
+import { getUsers, getUsersSearch, getUserById} from '../api/usersApi'
 import { getCommentsByPost, getCommentsByUser, getCommentsSearch } from '../api/commentsApi'
 import { setComment } from '../service/comments'
 
@@ -128,7 +128,7 @@ class ListComponent extends HTMLElement {
 
     }
 
-    getPostsPage() {
+   getPostsPage() {
         const shadow = this.shadowRoot
         const userId = this.getAttribute('user')
         const wrapper = shadow.querySelector('.list-block')
@@ -146,19 +146,24 @@ class ListComponent extends HTMLElement {
         const apiCall = this.search ? getPostsSearch(this.search, this.page) :
             userId ? getPostsByUser(userId, this.page) : getPosts(this.page)
 
+            
         apiCall.then(posts => {
 
             this.lastPage = posts.length < 10
             const count = posts.length
             pagination.setAttribute('last', this.lastPage)
             wrapper.innerHTML = ''
-            posts.forEach(post => {
+            posts.data.forEach(async post => {
                 setPost(post)
+
+                await getUserById(post.userId).then(user => setUser(user));
+
                 const postElement = document.createElement('post-component')
                 postElement.setAttribute('id', post.id)
                 if (this.search) {
                     postElement.setAttribute('search', this.search)
                 }
+
                 wrapper.appendChild(postElement)
             });
             if (count === 0 && this.page === 1) {
@@ -188,7 +193,7 @@ class ListComponent extends HTMLElement {
             this.lastPage = users.length < 10
             pagination.setAttribute('last', this.lastPage)
             wrapper.innerHTML = ''
-            users.forEach(user => {
+            users.data.forEach(user => {
                 setUser(user)
                 const userElement = document.createElement('user-component')
                 userElement.setAttribute('id', user.id)
@@ -236,7 +241,7 @@ class ListComponent extends HTMLElement {
                 this.lastPage = count < 10
                 pagination.setAttribute('last', this.lastPage)
                 wrapper.innerHTML = ''
-                comments.forEach(comment => {
+                comments.data.forEach(comment => {
                     setComment(comment)
                     const commentElement = document.createElement('comment-component')
                     commentElement.setAttribute('id', comment.id)

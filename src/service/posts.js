@@ -6,6 +6,8 @@ export const getPost = (postId) => {
 
 export const setPost = (post) => {
     posts.set(post.id, post)
+    // console.log(posts);
+    
 }
 
 export default {

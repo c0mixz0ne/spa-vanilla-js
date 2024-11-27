@@ -2,6 +2,7 @@ import appConstants from '../common/constants'
 import { goTo, routes } from '../router'
 import { randomColor, invertColor, getUserInitials, highlightText } from '../common/utils'
 import { getPost } from '../service/posts'
+import { getUser } from '../service/users'
 
 class PostComponent extends HTMLElement {
     constructor(){
@@ -85,22 +86,21 @@ class PostComponent extends HTMLElement {
 
         const user = shadow.querySelector('.post-user')
         const userAvatar = shadow.querySelector('user-avatar')
-        userAvatar.setAttribute('user-name', post.user.user_name)
+        userAvatar.setAttribute('user-name', getUser(post.userId).user_name)
+        userAvatar.setAttribute('id', getUser(post.userId).id)
 
         const userName = shadow.querySelector('.user-name')
         //debugger
-        userName.textContent = post.user.user_fullname
+        userName.textContent = getUser(post.userId).user_fullname
 
         user.addEventListener('click', (e) => {
             e.stopPropagation()
             //goto user
-            const url = routes.User.reverse({user: post.user.id})
+            const url = routes.User.reverse({user: getUser(post.userId).id})
             goTo(url)
         })
 
     }
-
-
 }
 
 customElements.define('post-component', PostComponent)

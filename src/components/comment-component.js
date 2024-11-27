@@ -1,6 +1,7 @@
 import { render, routes, goTo } from '../router';
 import { getPosts } from '../api/postsApi'
 import { getComment } from '../service/comments'
+import { getUser } from '../service/users';
 
 
 class CommentComponent extends HTMLElement {
@@ -89,6 +90,8 @@ class CommentComponent extends HTMLElement {
 
     const id = this.getAttribute('id')
     const comment = getComment(id)
+    console.log(comment);
+    
 
     const showPostButton = this.getAttribute('post-btn')
     if (showPostButton) {
@@ -111,13 +114,13 @@ class CommentComponent extends HTMLElement {
     const user = shadow.querySelector('.comment-user')
 
     const userAvatar = shadow.querySelector('user-avatar')
-    userAvatar.setAttribute('user-name', comment.user.user_name)
+    userAvatar.setAttribute('user-name', getUser(comment.userId).user_name)
     const userName = shadow.querySelector('.user-name')
-    userName.textContent = comment.user.user_fullname
+    userName.textContent = getUser(comment.userId).user_fullname
 
     user.addEventListener('click', (e) => {
       e.stopPropagation()
-      const url = routes.User.reverse({ user: comment.user.id })
+      const url = routes.User.reverse({ user: getUser(comment.userId).user.id })
       goTo(url)
     })
 

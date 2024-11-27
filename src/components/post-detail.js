@@ -2,6 +2,7 @@ import { render, routes, goTo } from '../router';
 import { getPosts, getPostById } from '../api/postsApi'
 import { getCommentsByPost } from '../api/commentsApi'
 import { getPost, setPost } from '../service/posts'
+import { getUser } from '../service/users';
 import { setComment, getComment } from '../service/comments'
 import { dateFormat } from '../common/utils'
 
@@ -104,18 +105,19 @@ class PostDetail extends HTMLElement {
 
   }
 
-  updatePost(post) {
+  updatePost(post) {    
     const shadow = this.shadowRoot;
 
     const title = shadow.querySelector('.post-title')
     title.textContent = post.title
     const text = shadow.querySelector('.post-text')
     text.textContent = post.text
-
+    console.log(getUser(post.userId).user_name);
+    
     const userAvatar = shadow.querySelector('user-avatar')
-    userAvatar.setAttribute('user-name', post.user.user_name)
+    userAvatar.setAttribute('user-name', getUser(post.userId).user_name)
     const userName = shadow.querySelector('.user-name')
-    userName.textContent = post.user.user_fullname
+    userName.textContent = getUser(post.userId).user_fullname
 
     const postDate = shadow.querySelector('date-formatted')
     postDate.setAttribute('date', post.createdAt)
