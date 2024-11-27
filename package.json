@@ -10,7 +10,8 @@
     "serve": "vite preview --port 3000",
     "build-prod": "cross-env BUILD_TYPE=prod vite build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "json-server --port 1111 ./db.json"
+    "server": "json-server --port 1111 ./db.json",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "@vitejs/plugin-legacy": "^2.3.1",
     "cross-env": "^7.0.3",
+    "gh-pages": "^6.2.0",
     "json-server": "^1.0.0-beta.3",
     "sass": "^1.56.1",
     "vite": "^3.2.4",

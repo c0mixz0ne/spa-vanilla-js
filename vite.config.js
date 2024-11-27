@@ -21,4 +21,5 @@ export default defineConfig({
             targets: ['defaults', 'not IE 11'],
         })
     ],
+    base: '/spa-vanilla-js/'
 })
